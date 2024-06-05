@@ -116,7 +116,7 @@ public class VideoControllerTest {
         video.setImpressions(10);
         video.setViews(5);
 
-        when(videoService.getEngagementStatistics(anyLong())).thenReturn(new EngagementStatistics(1L,10, 5));
+        when(videoService.getEngagementStatistics(anyLong())).thenReturn(new EngagementStatistics(1L, 10, 5));
 
         mockMvc.perform(get("/api/videos/1/engagement"))
                 .andExpect(status().isOk())
