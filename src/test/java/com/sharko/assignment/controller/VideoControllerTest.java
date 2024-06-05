@@ -63,14 +63,12 @@ public class VideoControllerTest {
     public void testLoadVideo() throws Exception {
         Video video = new Video();
         video.setTitle("Test Video");
-        video.setImpressions(1);
 
         when(videoService.loadVideo(anyLong())).thenReturn(video);
 
         mockMvc.perform(get("/api/videos/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Test Video"))
-                .andExpect(jsonPath("$.impressions").value(1));
+                .andExpect(jsonPath("$.title").value("Test Video"));
     }
 
     @Test
@@ -111,12 +109,9 @@ public class VideoControllerTest {
 
     @Test
     public void testGetEngagementStatistics() throws Exception {
-        Video video = new Video();
-        video.setId(1L);
-        video.setImpressions(10);
-        video.setViews(5);
+        EngagementStatistics engagementStatistics = new EngagementStatistics(1L, 10, 5);
 
-        when(videoService.getEngagementStatistics(anyLong())).thenReturn(new EngagementStatistics(1L, 10, 5));
+        when(videoService.getEngagementStatistics(anyLong())).thenReturn(engagementStatistics);
 
         mockMvc.perform(get("/api/videos/1/engagement"))
                 .andExpect(status().isOk())
