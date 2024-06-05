@@ -9,6 +9,11 @@ since we store the engagement parameters in the Video class.
 In the future, if we store engagement parameters as separate entities (for example, likes or user reactions), 
 then we will need to separate these classes into the existing VideoController and EngagementController, etc.
 
+At this stage, I did not use multithreading, asynchronous methods, or queues, 
+since the application is not designed for heavy loads. 
+In the future, if we expect high loads and data volumes, 
+it would be good to redesign the application architecture.
+
 I chose the H2 database for this project because it's lightweight, 
 easy to configure, and easy to test your application with. 
 In the future, you can switch to any other relational database depending on your needs.
